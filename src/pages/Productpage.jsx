@@ -6,8 +6,8 @@ const Product = () => {
 
   const sampleProduct = {
     id: 1,
-    name: "Wireless Headphones",
-    price: 120,
+    name: "dedeWireless Headphonessssssss",
+    price: 120000,
     image: "https://via.placeholder.com/100",
   };
 

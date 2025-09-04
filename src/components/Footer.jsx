@@ -1,19 +1,19 @@
 // components/Footer.jsx
 import React from "react";
+import { Link } from "react-router-dom";
 import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from "react-icons/fa";
-import Faqs from '../pages/Faqs'
+import Faqs from "../pages/Faqs";
 
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-gray-300 py-12">
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
-        
         {/* Logo + About */}
         <div>
           <h2 className="text-2xl font-bold text-white mb-4">ShopMate</h2>
           <p className="text-sm">
-            Your one-stop shop for the best products at unbeatable prices. 
-            Fast delivery and excellent customer service guaranteed.
+            Your one-stop shop for the best products at unbeatable prices. Fast
+            delivery and excellent customer service guaranteed.
           </p>
         </div>
 
@@ -21,21 +21,55 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
           <ul className="space-y-2 text-sm">
-            <li><a href="/" className="hover:text-white">Home</a></li>
-            <li><a href="/product" className="hover:text-white">Shop</a></li>
-            <li><a href="/about" className="hover:text-white">About Us</a></li>
-            <li><a href="/contact" className="hover:text-white">Contact</a></li>
+            <li>
+              <a href="/" className="hover:text-white">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="/product" className="hover:text-white">
+                Shop
+              </a>
+            </li>
+            <li>
+              <a href="/about" className="hover:text-white">
+                About Us
+              </a>
+            </li>
+            <li>
+              <a href="/contact" className="hover:text-white">
+                Contact
+              </a>
+            </li>
           </ul>
         </div>
 
         {/* Customer Service */}
         <div>
-          <h3 className="text-lg font-semibold text-white mb-4">Customer Service</h3>
+          <h3 className="text-lg font-semibold text-white mb-4">
+            Customer Service
+          </h3>
           <ul className="space-y-2 text-sm">
-            <li><a  href="/faqs" className="hover:text-white">FAQ</a></li>
-            <li><a href="/shipping" className="hover:text-white">Shipping & Returns</a></li>
-            <li><a href="/privacy" className="hover:text-white">Privacy Policy</a></li>
-            <li><a href="/terms" className="hover:text-white">Terms & Conditions</a></li>
+            <li>
+              <Link to="/faqs" className="hover:text-white">
+                FAQ's
+              </Link>
+            </li>
+            <li>
+              <Link to="/shipping" className="hover:text-white">
+                Shipping & Returns
+              </Link>
+            </li>
+            <li>
+              <Link to="/privacypolicy" className="hover:text-white">
+                Privacy Policy
+              </Link>
+            </li>
+            <li>
+              <Link to="/terms" className="hover:text-white">
+                Terms & Conditions
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -68,10 +102,18 @@ const Footer = () => {
 
         {/* Social Links */}
         <div className="flex space-x-4">
-          <a href="#" className="hover:text-white"><FaFacebook size={20} /></a>
-          <a href="#" className="hover:text-white"><FaInstagram size={20} /></a>
-          <a href="#" className="hover:text-white"><FaTwitter size={20} /></a>
-          <a href="#" className="hover:text-white"><FaLinkedin size={20} /></a>
+          <a href="#" className="hover:text-white">
+            <FaFacebook size={20} />
+          </a>
+          <a href="#" className="hover:text-white">
+            <FaInstagram size={20} />
+          </a>
+          <a href="#" className="hover:text-white">
+            <FaTwitter size={20} />
+          </a>
+          <a href="#" className="hover:text-white">
+            <FaLinkedin size={20} />
+          </a>
         </div>
       </div>
     </footer>

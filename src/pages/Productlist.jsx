@@ -1,16 +1,17 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Star, Heart, ArrowRight } from 'react-feather';
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Star, Heart, ArrowRight } from "react-feather";
 
-const Productlist= ({ products = [], isLoading = false }) => {
+const Productlist = ({ products = [], isLoading = false }) => {
   // Sample data if no products passed (for demo)
   const demoProducts = [
     {
-      id: 1,
-      name: 'Wireless Noise-Canceling Headphones',
-      price: 199.99,
+      id: 32,
+      name: "Wireless Noise-Canceling Headphones",
+      price: 1990000.99,
       rating: 4.5,
-      image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      image:
+        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       isNew: true,
     },
     // Add more demo products as needed
@@ -23,8 +24,8 @@ const Productlist= ({ products = [], isLoading = false }) => {
       {/* Grid Header */}
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-2xl md:text-3xl font-bold">Featured Products</h2>
-        <Link 
-          to="/products" 
+        <Link
+          to="/products"
           className="flex items-center text-indigo-600 hover:text-indigo-800 transition-colors"
         >
           View all <ArrowRight size={18} className="ml-1" />
@@ -33,7 +34,7 @@ const Productlist= ({ products = [], isLoading = false }) => {
 
       {/* Product Grid */}
       {isLoading ? (
-        <SkeletonGrid /> 
+        <SkeletonGrid />
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {displayedProducts.map((product) => (
@@ -66,14 +67,16 @@ const ProductCard = ({ product }) => {
       </div>
 
       {/* Wishlist Button */}
-      <button 
+      <button
         onClick={() => setIsWishlisted(!isWishlisted)}
         className="absolute top-3 right-3 z-10 p-2 bg-white/80 rounded-full backdrop-blur-sm hover:bg-white transition-colors"
         aria-label="Add to wishlist"
       >
-        <Heart 
-          size={18} 
-          className={isWishlisted ? 'fill-red-500 text-red-500' : 'text-gray-400'} 
+        <Heart
+          size={18}
+          className={
+            isWishlisted ? "fill-red-500 text-red-500" : "text-gray-400"
+          }
         />
       </button>
 
@@ -96,7 +99,7 @@ const ProductCard = ({ product }) => {
             {product.name}
           </h3>
         </Link>
-        
+
         {/* Rating */}
         <div className="flex items-center mb-2">
           <div className="flex text-amber-400">
@@ -104,7 +107,7 @@ const ProductCard = ({ product }) => {
               <Star
                 key={i}
                 size={14}
-                fill={i < Math.floor(product.rating) ? 'currentColor' : 'none'}
+                fill={i < Math.floor(product.rating) ? "currentColor" : "none"}
               />
             ))}
           </div>
@@ -125,8 +128,24 @@ const ProductCard = ({ product }) => {
               </span>
             )}
           </div>
+          <Link
+            to={`/product/${product.id}`}
+            className="mt-2 inline-block bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700"
+          >
+            Buy Now
+          </Link>
           <button className="bg-indigo-100 text-indigo-700 p-2 rounded-full hover:bg-indigo-200 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <circle cx="10" cy="20.5" r="1" />
               <circle cx="18" cy="20.5" r="1" />
               <path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1" />
@@ -142,7 +161,10 @@ const ProductCard = ({ product }) => {
 const SkeletonGrid = () => (
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
     {[...Array(8)].map((_, i) => (
-      <div key={i} className="bg-gray-100 rounded-xl overflow-hidden animate-pulse">
+      <div
+        key={i}
+        className="bg-gray-100 rounded-xl overflow-hidden animate-pulse"
+      >
         <div className="aspect-square bg-gray-200"></div>
         <div className="p-4 space-y-3">
           <div className="h-4 bg-gray-200 rounded w-3/4"></div>
