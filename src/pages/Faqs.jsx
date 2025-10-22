@@ -1,5 +1,8 @@
 import { useState } from "react";
+// lucide-react is a great icon library, we'll keep it
 import { ChevronDown, ChevronUp } from "lucide-react";
+// This image will be used for the banner
+import banner3 from "../assets/banner3.jpg";
 
 const faqs = [
   {
@@ -10,7 +13,7 @@ const faqs = [
   {
     question: "Can I return a product?",
     answer:
-      "Yes, you can return products within 7 days of delivery if they are unused and in original packaging.",
+      "Yes, you can return products within 3 days of delivery if they are unused and in original packaging.",
   },
   {
     question: "Do you ship internationally?",
@@ -20,7 +23,7 @@ const faqs = [
   {
     question: "What payment methods do you accept?",
     answer:
-      "We accept Visa, Mastercard, PayPal, and Cash on Delivery (COD) in certain regions.",
+      "We accept Jazzcash EasyPaisa BankTransfer, and Cash on Delivery (COD) in certain regions.",
   },
   {
     question: "How can I track my order?",
@@ -37,14 +40,36 @@ export default function Faqs() {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen">
-      {/* Hero Section */}
-      <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-16 text-center">
-        <h1 className="text-4xl font-bold mb-4">Frequently Asked Questions</h1>
-        <p className="max-w-2xl mx-auto text-lg opacity-90">
-          Quick answers to common questions about shopping, shipping, and
-          returns.
-        </p>
+    // Replaced light background with the signature dark theme
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
+      {/* Hero Section with Banner Image */}
+      <div className="relative py-20 md:py-32 overflow-hidden text-center">
+        {/* Background Image & Overlay */}
+        <div
+          className="absolute inset-0 z-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${banner3})` }}
+        >
+          <div className="absolute inset-0 bg-black opacity-80"></div>
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 max-w-4xl mx-auto px-6">
+          <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full mb-8 shadow-lg border border-white/20">
+            <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
+            <span className="text-sm font-medium text-yellow-400 uppercase tracking-wider">
+              Help Center
+            </span>
+          </div>
+          <h1 className="text-4xl md:text-6xl font-light text-white mb-4">
+            Frequently Asked{" "}
+            <span className="font-serif italic text-yellow-400">Questions</span>
+          </h1>
+          <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto mb-6"></div>
+          <p className="max-w-2xl mx-auto text-lg text-gray-300">
+            Quick answers to common questions about shopping, shipping, and
+            returns.
+          </p>
+        </div>
       </div>
 
       {/* FAQ List */}
@@ -52,44 +77,51 @@ export default function Faqs() {
         {faqs.map((faq, index) => (
           <div
             key={index}
-            className="bg-white shadow-md rounded-xl p-6 cursor-pointer hover:shadow-lg transition"
-            onClick={() => toggleFAQ(index)}
+            className="bg-gradient-to-r from-gray-800 to-gray-900 rounded-2xl border border-gray-700 overflow-hidden transition-all duration-300 hover:border-yellow-400/50"
           >
-            <div className="flex justify-between items-center">
-              <h2 className="text-lg font-semibold text-gray-800">
+            <div
+              className="flex justify-between items-center p-6 cursor-pointer"
+              onClick={() => toggleFAQ(index)}
+            >
+              <h2 className="text-lg font-semibold text-white">
                 {faq.question}
               </h2>
               {openIndex === index ? (
-                <ChevronUp className="w-5 h-5 text-indigo-600" />
+                <ChevronUp className="w-5 h-5 text-yellow-400 flex-shrink-0" />
               ) : (
-                <ChevronDown className="w-5 h-5 text-gray-500" />
+                <ChevronDown className="w-5 h-5 text-gray-400 flex-shrink-0" />
               )}
             </div>
             {openIndex === index && (
-              <p className="mt-3 text-gray-600">{faq.answer}</p>
+              <div className="px-6 pb-6">
+                <p className="mt-2 text-gray-300 leading-relaxed border-l-2 border-yellow-400 pl-4">
+                  {faq.answer}
+                </p>
+              </div>
             )}
           </div>
         ))}
       </div>
 
       {/* Contact CTA */}
-      <div className="bg-indigo-50 py-12 mt-10 text-center">
-        <h2 className="text-2xl font-bold mb-4">Still have questions?</h2>
-        <p className="text-gray-700 mb-6">
-          Reach out to our support team anytime at{" "}
-          <a
-            href="mailto:support@example.com"
-            className="text-indigo-600 underline"
-          >
-            support@example.com
-          </a>
-        </p>
-        <a
-          href="/contact"
-          className="inline-block bg-indigo-600 text-white px-6 py-3 rounded-xl font-medium hover:bg-indigo-700 transition"
-        >
-          Contact Support
-        </a>
+      <div className="py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="bg-gradient-to-br from-gray-900 to-black rounded-3xl p-12 text-white shadow-2xl border border-gray-800">
+            <h3 className="text-3xl md:text-4xl font-light mb-4 tracking-tight">
+              Still have questions?
+            </h3>
+            <p className="text-gray-400 text-xl mb-8 max-w-2xl mx-auto">
+              Our team is here to help. Reach out anytime and we'll get back to
+              you as soon as possible.
+            </p>
+            <a
+              href="/contact" // Assuming you have a contact page
+              className="inline-block bg-yellow-400 text-gray-900 px-8 py-4 rounded-xl font-semibold hover:bg-yellow-300 transition-colors transform hover:scale-105"
+            >
+              Contact Support
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   );
